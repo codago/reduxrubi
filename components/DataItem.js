@@ -10,13 +10,13 @@ export default class DataItem extends Component{
   }
 
   render(){
-    const {data} = this.props
+    const {data, deleteData} = this.props
     const liStyle = {
       'color': '#ffffff',
       'backgroundColor': '#000000'
     }
     return(
-      <li style={liStyle}>{data.name} - {data.phone}<button type="button">Delete</button></li>
+      <li style={liStyle}>{data.name} - {data.phone}<button type="button" onClick={()=>deleteData(data.id)}>Delete</button></li>
     )
   }
 }

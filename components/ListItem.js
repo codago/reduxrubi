@@ -7,11 +7,11 @@ export default class ListItem extends Component{
   }
 
   render(){
-    const {data} = this.props
+    const {data, onDelete} = this.props
 
     let dataNodes = data.map(function(item, index){
       return(
-        <DataItem key={index} data={item}/>
+        <DataItem key={index} data={item} deleteData={onDelete}/>
       )
     });
     return(

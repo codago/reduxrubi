@@ -12,7 +12,7 @@ class App extends Component{
       <div>
       <h1>Redux Rubi</h1>
       <AppTextInput name="" phone="" onSave={actions.addData}/>
-      <ListItem data={data}/>
+      <ListItem data={data} onDelete={actions.deleteData}/>
       </div>
     )
   }
