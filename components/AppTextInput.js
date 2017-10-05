@@ -4,6 +4,7 @@ class AppTextInput extends Component{
   constructor(props){
     super(props)
     this.state = {
+      id: this.props.id || '',
       name: this.props.name || '',
       phone: this.props.phone || ''
     }
@@ -24,8 +25,13 @@ class AppTextInput extends Component{
     if(!name || !phone){
       return;
     }
-    this.props.onSave(name, phone)
-    this.setState({name: '', phone: ''})
+    if(this.props.id.toString() == ""){
+      this.props.onSave(name, phone)
+      this.setState({id: '', name: '', phone:''})
+    }else{
+      this.props.onSave(name, phone, this.props.id)
+      this.props.onHide(this.props.id)
+    }
   }
 
   render(){

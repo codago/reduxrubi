@@ -11,8 +11,8 @@ class App extends Component{
     return(
       <div>
       <h1>Redux Rubi</h1>
-      <AppTextInput name="" phone="" onSave={actions.addData}/>
-      <ListItem data={data} onDelete={actions.deleteData}/>
+      <AppTextInput id="" name="" phone="" onSave={actions.addData} hideEdit={actions.hideEdit}/>
+      <ListItem data={data.data} actions={actions}/>
       </div>
     )
   }
@@ -20,7 +20,7 @@ class App extends Component{
 
 function mapStateToProps(state){
   return{
-    data: state.data
+    data: state
   }
 }
 
