@@ -16,7 +16,7 @@ export default class DataItem extends Component{
       'backgroundColor': '#000000'
     }
     return(
-      <li style={liStyle}>{data.name} - {data.phone}</li>
+      <li style={liStyle}>{data.name} - {data.phone}<button type="button">Delete</button></li>
     )
   }
 }

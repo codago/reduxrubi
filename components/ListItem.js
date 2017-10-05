@@ -7,11 +7,11 @@ export default class ListItem extends Component{
   }
 
   render(){
-    //const {data} = this.props
-    const data = [{id: 1, name: 'test', phone: '081122'}, {id: 2, name: 'testing', phone: '08112233'}]
-    let dataNodes = data.map(function(item){
+    const {data} = this.props
+
+    let dataNodes = data.map(function(item, index){
       return(
-        <DataItem key={data.id} data={item}/>
+        <DataItem key={index} data={item}/>
       )
     });
     return(
