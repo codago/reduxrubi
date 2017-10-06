@@ -1,4 +1,4 @@
-import {ADD_DATA, DELETE_DATA, EDIT_DATA, SHOW_EDIT, HIDE_EDIT, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE} from '../constants/ActionTypes'
+import {ADD_DATA, DELETE_DATA, EDIT_DATA, SHOW_EDIT, HIDE_EDIT, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, ADD_DATA_FAILURE, ADD_DATA_SUCCESS} from '../constants/ActionTypes'
 
 const initialState = []
 
@@ -7,12 +7,14 @@ export default function data(state = initialState, action){
     case ADD_DATA:
     return [
       {
-        id: Date.now().toString(),
+        id: action.id,
         name: action.name,
         phone: action.phone
       },
       ...state
     ]
+    case ADD_DATA_FAILURE:
+    return state.filter(data => data.id !== action.id)
     case DELETE_DATA:
     return state.filter(data => data.id !== action.id)
     case EDIT_DATA:
@@ -27,6 +29,7 @@ export default function data(state = initialState, action){
       return data
     })
     case LOAD_DATA_FAILURE:
+    case ADD_DATA_SUCCESS:
     return state
     default:
     return state

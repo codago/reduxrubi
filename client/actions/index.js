@@ -24,8 +24,36 @@ export function loadData(){
   }
 }
 
+function addDataFailure(id){
+  return {type: types.ADD_DATA_FAILURE, id}
+}
+
+function addDataSuccess(phonebook){
+  return {type: types.ADD_DATA_SUCCESS, phonebook}
+}
+
+function addDataToRedux(id, name, phone){
+  return {type: types.ADD_DATA, id, name, phone}
+}
+
 export function addData(name, phone){
-  return {type: types.ADD_DATA, name, phone}
+  return dispatch => {
+    let id = Date.now().toString()
+    dispatch(addDataToRedux(id, name, phone))
+    return axios.post(SERVER_URL, {
+      id: id,
+      name: name,
+      phone: phone
+    })
+    .then(function (response) {
+      console.log(response);
+      dispatch(addDataSuccess(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch(addDataFailure(id));
+    });
+  }
 }
 
 export function deleteData(id){
