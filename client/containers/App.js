@@ -6,6 +6,10 @@ import {bindActionCreators} from 'redux'
 import * as AppActions from '../actions'
 
 class App extends Component{
+  componentDidMount(){
+    this.props.actions.loadData()
+  }
+
   render(){
     const {data, actions} = this.props
     return(
